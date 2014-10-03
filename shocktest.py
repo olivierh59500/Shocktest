@@ -11,6 +11,7 @@ if len(sys.argv) <= 1:
 else:
   #print sys.argv[1]
   opfile = sys.argv[1]
+  svfile = raw_input("Save contents if found? [y/n]: ")
   try:
     i = open(opfile,'r')
   except:
@@ -19,8 +20,11 @@ else:
     for pattern in shellsh:
       match = re.findall(pattern,line)
       if match:
-        print "Found shellshock pattern!"
         print line
+        if svfile == "y" or svfile == "Y":
+          a = open("ShocksFound.txt",'a')
+          a.write(line+'\n')
+          a.close()
       else:
         continue
   i.close()
