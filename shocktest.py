@@ -25,6 +25,8 @@ else:
           a = open("ShocksFound.txt",'a')
           a.write(line+'\n')
           a.close()
+        else:
+          pass
       else:
         continue
   i.close()
